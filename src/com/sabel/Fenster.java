@@ -14,6 +14,7 @@ public class Fenster extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.initComponents();
         this.setSize(400, 300);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
