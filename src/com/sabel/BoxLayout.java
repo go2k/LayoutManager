@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class BoxLayout extends JFrame {
 
+    private JPanel jpNorth;
     private JPanel jpSouth;
     private JPanel jpWest;
     private JPanel jpCenter;
@@ -17,6 +18,7 @@ public class BoxLayout extends JFrame {
     private Button btnGreen;
     private Button btnBlue;
     private Button btnRed;
+    private JComboBox jComboColor;
 
 
     public static void main(String[] args) {
@@ -28,8 +30,8 @@ public class BoxLayout extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.initComponents();
         this.initEvents();
-        //this.setSize(300, 300);
-        this.pack();
+        this.setSize(300, 300);
+        //this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -63,6 +65,14 @@ public class BoxLayout extends JFrame {
         jpCenter = new JPanel();
         jpCenter.setBackground(Color.RED);
         this.add(jpCenter, BorderLayout.CENTER);
+
+        jpNorth = new JPanel();
+        String[] items = {"Rot", "Grün", "Blau"};
+        jComboColor = new JComboBox(items);
+        //jComboColor.setPreferredSize(new Dimension(100,20));
+        jComboColor.setPrototypeDisplayValue("XXXXXXXXXXXXXXX");
+        jpNorth.add(jComboColor);
+        this.add(jpNorth, BorderLayout.NORTH);
     }
 
     private void initEvents() {
@@ -109,20 +119,40 @@ public class BoxLayout extends JFrame {
             }
         });
 
+        jComboColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch ((String) jComboColor.getSelectedItem()) {
+                    case "Rot":
+                        setRed();
+                        break;
+                    case "Blau":
+                        setBlue();
+                        break;
+                    case "Grün":
+                        setGreen();
+                        break;
+                };
+            }
+        });
+
     }
 
     private void setRed() {
         jrRed.setSelected(true);
         jpCenter.setBackground(Color.RED);
+        jComboColor.setSelectedItem("Rot");
     }
 
     private void setBlue() {
         jrBlue.setSelected(true);
         jpCenter.setBackground(Color.BLUE);
+        jComboColor.setSelectedItem("Blau");
     }
 
     private void setGreen() {
         jrGreen.setSelected(true);
         jpCenter.setBackground(Color.GREEN);
+        jComboColor.setSelectedItem("Grün");
     }
 }
