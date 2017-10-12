@@ -10,13 +10,13 @@ public class BoxLayout extends JFrame {
     private JPanel jpSouth;
     private JPanel jpWest;
     private JPanel jpCenter;
-    private JRadioButton jrRot;
-    private JRadioButton jrBlau;
-    private JRadioButton jrGruen;
+    private JRadioButton jrRed;
+    private JRadioButton jrBlue;
+    private JRadioButton jrGreen;
     private ButtonGroup bgPanelWest;
-    private Button btnGruen;
-    private Button btnBlau;
-    private Button btnRot;
+    private Button btnGreen;
+    private Button btnBlue;
+    private Button btnRed;
 
 
     public static void main(String[] args) {
@@ -28,7 +28,8 @@ public class BoxLayout extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.initComponents();
         this.initEvents();
-        this.setSize(600, 400);
+        //this.setSize(300, 300);
+        this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -37,27 +38,26 @@ public class BoxLayout extends JFrame {
 
         jpWest = new JPanel();
         jpWest.setLayout(new javax.swing.BoxLayout(jpWest, javax.swing.BoxLayout.Y_AXIS));
-        jrBlau = new JRadioButton("Blau");
-        jrGruen = new JRadioButton("Grün");
-        jrRot = new JRadioButton("Rot");
+        jrBlue = new JRadioButton("Blau");
+        jrGreen = new JRadioButton("Grün");
+        jrRed = new JRadioButton("Rot");
+        jrRed.setSelected(true);
         bgPanelWest = new ButtonGroup();
-        bgPanelWest.add(jrRot);
-        bgPanelWest.add(jrGruen);
-        bgPanelWest.add(jrBlau);
-        jpWest.add(jrRot);
-        jpWest.add(jrGruen);
-        jpWest.add(jrBlau);
-        jrRot.setSelected(true);
-
+        bgPanelWest.add(jrRed);
+        bgPanelWest.add(jrGreen);
+        bgPanelWest.add(jrBlue);
+        jpWest.add(jrRed);
+        jpWest.add(jrGreen);
+        jpWest.add(jrBlue);
         this.add(jpWest, BorderLayout.WEST);
 
         jpSouth = new JPanel();
-        btnBlau = new Button("Blau");
-        btnGruen = new Button("Grün");
-        btnRot = new Button("Rot");
-        jpSouth.add(btnRot);
-        jpSouth.add(btnGruen);
-        jpSouth.add(btnBlau);
+        btnBlue = new Button("Blau");
+        btnGreen = new Button("Grün");
+        btnRed = new Button("Rot");
+        jpSouth.add(btnRed);
+        jpSouth.add(btnGreen);
+        jpSouth.add(btnBlue);
         this.add(jpSouth, BorderLayout.SOUTH);
 
         jpCenter = new JPanel();
@@ -67,62 +67,62 @@ public class BoxLayout extends JFrame {
 
     private void initEvents() {
 
-        jrRot.addActionListener(new ActionListener() {
+        jrRed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setzeRot();
+                setRed();
             }
         });
 
-        jrGruen.addActionListener(new ActionListener() {
+        jrGreen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setzeGruen();
+                setGreen();
             }
         });
 
-        jrBlau.addActionListener(new ActionListener() {
+        jrBlue.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setzeBlau();
+                setBlue();
             }
         });
 
-        btnRot.addActionListener(new ActionListener() {
+        btnRed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jrRot.setSelected(true);
-                setzeRot();
+                setRed();
             }
         });
 
-        btnGruen.addActionListener(new ActionListener() {
+        btnGreen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jrGruen.setSelected(true);
-                setzeGruen();
+                setGreen();
             }
         });
 
-        btnBlau.addActionListener(new ActionListener() {
+        btnBlue.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jrBlau.setSelected(true);
-                setzeBlau();
+                setBlue();
             }
         });
 
     }
 
-    private void setzeRot() {
+    private void setRed() {
+        jrRed.setSelected(true);
         jpCenter.setBackground(Color.RED);
     }
 
-    private void setzeBlau() {
+    private void setBlue() {
+        jrBlue.setSelected(true);
         jpCenter.setBackground(Color.BLUE);
     }
 
-    private void setzeGruen() {
+    private void setGreen() {
+        jrGreen.setSelected(true);
         jpCenter.setBackground(Color.GREEN);
     }
 }
