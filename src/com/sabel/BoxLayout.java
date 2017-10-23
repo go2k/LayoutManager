@@ -1,9 +1,14 @@
 package com.sabel;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class BoxLayout extends JFrame {
 
@@ -27,7 +32,7 @@ public class BoxLayout extends JFrame {
 
     public BoxLayout() {
         super("Boxlayout");
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.initComponents();
         this.initEvents();
         this.setSize(300, 300);
@@ -137,6 +142,14 @@ public class BoxLayout extends JFrame {
             }
         });
 
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                dlgEnd();
+            }
+        });
+
     }
 
     private void setRed() {
@@ -156,4 +169,11 @@ public class BoxLayout extends JFrame {
         jpCenter.setBackground(Color.GREEN);
         jComboColor.setSelectedItem("Grün");
     }
-}
+
+    private void dlgEnd() {
+        if (JOptionPane.showConfirmDialog(this, "Wollen Sie das Programm wirklich beenden?", "Programm Beenden", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+    }
+
