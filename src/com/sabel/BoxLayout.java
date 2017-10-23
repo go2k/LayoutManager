@@ -75,6 +75,7 @@ public class BoxLayout extends JFrame {
         this.add(jpNorth, BorderLayout.NORTH);
     }
 
+
     private void initEvents() {
 
         jrRed.addActionListener(new ActionListener() {
